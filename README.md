@@ -40,7 +40,7 @@ BBansAPI api = p.getProvider();
 api.getPunishmentManager().banAsync(uuid, "Reason", moderatorUuid, Duration.ofDays(7));
 ```
 
-Стабильный пакет — `ru.example.bbans.api`. В `plugin.yml` своего плагина укажите `depend`/`softdepend: [BBans]`.
+Стабильный пакет — `ru.birkasq.bbans.api`. В `plugin.yml` своего плагина укажите `depend`/`softdepend: [BBans]`.
 
 ## Структура
 
