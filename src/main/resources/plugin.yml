@@ -1,0 +1,77 @@
+name: BBans
+version: 1.0.0
+main: ru.birkasq.bbans.BBansPlugin
+api-version: "1.16"
+description: Punishment manager (bans, mutes, warnings, kicks) with hierarchy and public API
+author: BBans
+
+# Права на команды проверяются внутри плагина (чтобы сообщение об отказе брались из messages.yml).
+commands:
+  ban:
+    description: Заблокировать игрока
+    usage: /ban <игрок> [время] <причина>
+  unban:
+    description: Снять бан
+    usage: /unban <игрок>
+  mute:
+    description: Выдать мут
+    usage: /mute <игрок> [время] <причина>
+  unmute:
+    description: Снять мут
+    usage: /unmute <игрок>
+  warn:
+    description: Выдать предупреждение
+    usage: /warn <игрок> <причина>
+  unwarn:
+    description: Снять предупреждение
+    usage: /unwarn <игрок> [номер]
+  warnings:
+    description: Активные предупреждения игрока
+    usage: /warnings <игрок>
+  check:
+    description: История наказаний игрока
+    usage: /check <игрок> [страница]
+  banlist:
+    description: Список активных банов
+    usage: /banlist [страница]
+  mutelist:
+    description: Список активных мутов
+    usage: /mutelist [страница]
+  kick:
+    description: Кикнуть игрока
+    usage: /kick <игрок> <причина>
+  bbans:
+    description: Служебные команды BBans
+    usage: /bbans reload
+
+permissions:
+  bbans.ban:
+    default: op
+  bbans.unban:
+    default: op
+  bbans.mute:
+    default: op
+  bbans.unmute:
+    default: op
+  bbans.warn:
+    default: op
+  bbans.unwarn:
+    default: op
+  bbans.warnings:
+    default: op
+  bbans.check:
+    default: op
+  bbans.banlist:
+    default: op
+  bbans.mutelist:
+    default: op
+  bbans.kick:
+    default: op
+  bbans.reload:
+    default: op
+  bbans.hierarchy.admin:
+    default: false
+  bbans.hierarchy.moder:
+    default: false
+  bbans.hierarchy.helper:
+    default: false

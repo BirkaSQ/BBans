@@ -1,0 +1,98 @@
+# Плейсхолдеры: {player} {uuid} {reason} {moderator} {duration} {remaining} {type} {status} {id} {date}
+prefix: "&8[&cBBans&8] &7"
+
+errors:
+  no-permission: "{prefix}&cУ вас нет прав."
+  player-not-found: "{prefix}&cИгрок &f{player} &cне найден."
+  player-not-online: "{prefix}&cИгрок &f{player} &cсейчас не в сети."
+  already-banned: "{prefix}&cИгрок &f{player} &cуже заблокирован."
+  already-muted: "{prefix}&cИгрок &f{player} &cуже замьючен."
+  no-active-ban: "{prefix}&cУ игрока &f{player} &cнет активного бана."
+  no-active-mute: "{prefix}&cУ игрока &f{player} &cнет активного мута."
+  no-active-warns: "{prefix}&cУ игрока &f{player} &cнет активных предупреждений."
+  invalid-warn-number: "{prefix}&cНеверный номер. Активных предупреждений: &f{max}&c."
+  invalid-duration: "{prefix}&cНеверный формат времени. Примеры: 30s, 10m, 2h, 7d, 2w, 1mo, 1y."
+  punishment-not-found: "{prefix}&cНаказание #{id} не найдено."
+  not-active: "{prefix}&cЭто наказание уже не активно."
+  not-removable: "{prefix}&cЭто наказание нельзя снять."
+  cannot-self: "{prefix}&cНельзя наказать самого себя."
+  hierarchy-punish: "{prefix}&cВы не можете наказать игрока &f{player}&c: недостаточно прав в иерархии."
+  hierarchy-modify: "{prefix}&cВы не можете изменить это наказание: оно принадлежит модератору выше или равному вам."
+  internal: "{prefix}&cВнутренняя ошибка. Подробности в консоли."
+
+usage:
+  ban: "{prefix}&cИспользование: &f/ban <игрок> [время] <причина>"
+  unban: "{prefix}&cИспользование: &f/unban <игрок>"
+  mute: "{prefix}&cИспользование: &f/mute <игрок> [время] <причина>"
+  unmute: "{prefix}&cИспользование: &f/unmute <игрок>"
+  warn: "{prefix}&cИспользование: &f/warn <игрок> <причина>"
+  unwarn: "{prefix}&cИспользование: &f/unwarn <игрок> [номер]"
+  warnings: "{prefix}&cИспользование: &f/warnings <игрок>"
+  check: "{prefix}&cИспользование: &f/check <игрок> [страница]"
+  kick: "{prefix}&cИспользование: &f/kick <игрок> <причина>"
+  bbans: "{prefix}&cИспользование: &f/bbans reload"
+
+time:
+  permanent: "Навсегда"
+  day: "д"
+  hour: "ч"
+  minute: "м"
+  second: "с"
+
+status:
+  active: "&aACTIVE"
+  expired: "&7EXPIRED"
+  removed: "&cREMOVED"
+  kick: "&7—"
+
+ban:
+  success: "{prefix}&aИгрок &f{player} &aзаблокирован. &7Срок: &f{duration}&7. Причина: &f{reason}"
+  screen: "&cВы заблокированы на этом сервере.\n\n&7Причина: &f{reason}\n&7Осталось: &f{remaining}\n&7Модератор: &f{moderator}"
+
+unban:
+  success: "{prefix}&aБан игрока &f{player} &aснят."
+
+mute:
+  success: "{prefix}&aИгрок &f{player} &aзамьючен. &7Срок: &f{duration}&7. Причина: &f{reason}"
+  notify: "{prefix}&cВас замьютили. &7Причина: &f{reason}&7. Осталось: &f{remaining}"
+  chat-blocked: "{prefix}&cВы замьючены.\n&7Причина: &f{reason}\n&7Осталось: &f{remaining}"
+  command-blocked: "{prefix}&cВы замьючены и не можете использовать эту команду. &7Осталось: &f{remaining}"
+
+unmute:
+  success: "{prefix}&aМут игрока &f{player} &aснят."
+
+warn:
+  success: "{prefix}&eИгрок &f{player} &eполучил предупреждение. &7Причина: &f{reason} &7(активных: &f{count}&7)"
+  notify: "{prefix}&eВы получили предупреждение. &7Причина: &f{reason}"
+  auto-punished: "{prefix}&cЛимит предупреждений ({limit}) достигнут: игроку &f{player} &cвыдан автоматический {type} &7({duration})&c."
+
+unwarn:
+  success: "{prefix}&aПредупреждение игрока &f{player} &aснято. &7Причина была: &f{reason}"
+
+kick:
+  success: "{prefix}&aИгрок &f{player} &aкикнут. &7Причина: &f{reason}"
+  screen: "&cВы были кикнуты с сервера.\n\n&7Причина: &f{reason}\n&7Модератор: &f{moderator}"
+
+warnings:
+  header: "{prefix}&7Активные предупреждения &f{player}&7:"
+  empty: "{prefix}&7У игрока &f{player} &7нет активных предупреждений."
+  entry: "&8[&f{index}&8] &7{date} &8— &f{reason} &8(&7{moderator}&8)"
+  auto-reason: "Достигнут лимит предупреждений ({limit})"
+
+check:
+  header: "{prefix}&7История &f{player} &8| &7страница &f{page}/{pages} &8| &7записей: &f{total}"
+  empty: "{prefix}&7У игрока &f{player} &7нет наказаний."
+  entry: "&8[&f#{id}&8] &e{type}\n  &7Причина: &f{reason}\n  &7Модератор: &f{moderator}\n  &7Дата: &f{date} &8| &7Срок: &f{duration}\n  &7Статус: {status}"
+
+banlist:
+  header: "{prefix}&7Активные баны &8| &7страница &f{page}/{pages} &8| &7всего: &f{total}"
+  empty: "{prefix}&7Активных банов нет."
+  entry: "&f{player} &8— &7{reason} &8— &e{remaining}"
+
+mutelist:
+  header: "{prefix}&7Активные муты &8| &7страница &f{page}/{pages} &8| &7всего: &f{total}"
+  empty: "{prefix}&7Активных мутов нет."
+  entry: "&f{player} &8— &7{reason} &8— &e{remaining}"
+
+reload:
+  success: "{prefix}&aКонфигурация и сообщения перезагружены."

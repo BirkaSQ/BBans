@@ -1,0 +1,89 @@
+# ==========================================================
+#  BBans — config.yml
+# ==========================================================
+
+database:
+  type: SQLITE          # сейчас поддерживается только SQLITE
+  file: "bbans.db"      # plugins/BBans/bbans.db
+
+# Причина по умолчанию (используется через API, если причина пустая)
+default-reason: "Не указана"
+
+# Формат даты в сообщениях (Java DateTimeFormatter)
+date-format: "dd.MM.yyyy HH:mm"
+
+# Как часто (в секундах) переводить истёкшие наказания в статус EXPIRED
+expiry-check-seconds: 30
+
+# Автоматические наказания за превышение лимита активных WARN
+warnings:
+  auto-punishment:
+    enabled: true
+    limit: 3
+    type: BAN           # BAN или MUTE
+    duration: "1d"      # "permanent" — навсегда
+
+# Команды, запрещённые замьюченным игрокам (без "/")
+mute:
+  blocked-commands:
+    - msg
+    - tell
+    - w
+    - whisper
+    - r
+    - reply
+    - me
+    - say
+
+# Логирование действий модераторов
+logging:
+  console: true
+  file: true            # plugins/BBans/logs/actions.log
+
+# Иерархия модераторов.
+# Игрок попадает в группу, если у него есть право group.permission
+# (выдавать его можно любым permission-плагином).
+# Если подходит несколько групп — берётся с наибольшим priority.
+# Игрок без группы имеет default-priority и может быть наказан кем угодно
+# (при наличии права на команду).
+hierarchy:
+  enabled: true
+  default-priority: 0
+
+  groups:
+
+    admin:
+      priority: 100
+      permission: "bbans.hierarchy.admin"
+      rules:
+        punish-lower: true
+        punish-equal: false
+        punish-higher: false
+        modify-own: true
+        modify-lower: true
+        modify-equal: false
+        modify-higher: false
+
+    moder:
+      priority: 50
+      permission: "bbans.hierarchy.moder"
+      rules:
+        punish-lower: true
+        punish-equal: false
+        punish-higher: false
+        modify-own: true
+        modify-lower: false
+        modify-equal: false
+        modify-higher: false
+
+    helper:
+      priority: 10
+      permission: "bbans.hierarchy.helper"
+      rules:
+        punish-lower: true
+        punish-equal: false
+        punish-higher: false
+        modify-own: true
+        modify-lower: false
+        modify-equal: false
+        modify-higher: false
